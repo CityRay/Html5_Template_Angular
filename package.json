@@ -1,0 +1,28 @@
+{
+  "name": "html-apps-template-angularjs",
+  "version": "1.1.0",
+  "scripts": {
+    "start": "gulp",
+    "serve": "browser-sync start --port 3838 --files 'build/*.*'' --server build"
+  },
+  "devDependencies": {
+    "front-router": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-load-plugins": "1.0.0-rc.1",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.0.3",
+    "gulp-uglify": "^1.2.0",
+    "gulp-webserver": "^0.9.1",
+    "imagemin-pngquant": "^4.2.0",
+    "rimraf": "^2.4.1",
+    "run-sequence": "^1.1.1",
+    "yargs": "^3.15.0"
+  },
+  "private": true
+}

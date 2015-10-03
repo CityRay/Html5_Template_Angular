@@ -1,0 +1,31 @@
+{
+  "name": "html-apps-template-angularjs",
+  "version": "1.0.0",
+  "authors": [
+    "RAY"
+  ],
+  "description": "Html5 Template project & AngularJS",
+  "main": "gulpfile.js",
+  "keywords": [
+    "framework",
+    "angular",
+    "web",
+    "apps",
+    "bootstrap-sass"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "font-awesome": "~4.4.0",
+    "foundation-apps": "~1.1.0"
+  }
+}
