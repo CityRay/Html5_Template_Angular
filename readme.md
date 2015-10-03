@@ -1,9 +1,11 @@
 # HTML Template & Angularjs
 
 ###Framework
+```bash
 foundation-apps 1.1.0
 bootstrap-sass
-
+```
+###Start
 ```bash
 npm install
 bower install
