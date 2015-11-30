@@ -12,6 +12,7 @@ var rimraf   = require('rimraf');
 var router   = require('front-router');
 var sequence = require('run-sequence');
 var pngquant = require('imagemin-pngquant');
+var checkCSS = require( 'gulp-check-unused-css' );
 
 // Check for --production flag
 var isProduction = !!(argv.production);
@@ -128,28 +129,32 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:production', function () {
-  return gulp.src('client/assets/scss/app.scss')
+  
+  return gulp.src('client/assets/scss/main.scss')
     .pipe($.compass({
       config_file: 'config.rb',
       sourcemap: true,
       debug: false,
       comments: false,
       time: true,
-      css: './build/assets/css',
+      css: '../../Web Site/Content/',
       sass: './client/assets/scss',
       image: './client/assets/images',
-      style: 'compact', //nested, expanded, compact, compressed
+      style: 'compressed', //nested, expanded, compact, compressed
       import_path: paths.sass
     }))
     .on("error", $.notify.onError(function (error) {
       return "Error: " + error.message;
-     }))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie 10']
     }))
-    .pipe(gulp.dest('./build/assets/css/'))
-    .pipe($.notify({ message: 'SASS & Autoprefixer Task Complete' }));
+    .pipe(gulp.dest('../../Web Site/Content/'))
+    .pipe($.notify({ message: 'Prod SASS Task Complete' }));
 
+});
+
+gulp.task('checkcss', function(){
+  return gulp.src(['../../Web Site/Frontend/GuguStoreFrontend/GuguStore.Frontend.Mobile/Content/main.css', 
+                    '../../Web Site/Frontend/GuguStoreFrontend/GuguStore.Frontend.Mobile/Views/*/*.cshtml'])
+              .pipe(checkCSS());
 });
 
 // Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
@@ -209,4 +214,13 @@ gulp.task('default', ['server'], function () {
 
   // Watch app templates
   gulp.watch(['./client/templates/**/*.html'], ['copy:templates']);
+});
+
+gulp.task('prod', ['sass:production'], function () {
+  // Watch Sass
+  gulp.watch(['./client/assets/scss/**/*', './scss/**/*'], ['sass:production']);
+
+  // Watch static files
+  gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/assets/{scss,js}/**/*.*'], ['copy']);
+
 });
